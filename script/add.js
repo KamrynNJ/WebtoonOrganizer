@@ -9,7 +9,7 @@ function clickAddButton(form){
   var title=document.createElement("div");
   var node=document.createTextNode(formTitle);
   title.appendChild(node);
-  var element = document.getElementById("div1");
+  var element = document.getElementById("webtoons");
   element.appendChild(title);
 
   var pic=document.createElement("div");
@@ -19,7 +19,7 @@ function clickAddButton(form){
   picNode.onclick = function() {
     window.location.href = formLink;
   };
-  var element = document.getElementById("div1");
+  var element = document.getElementById("webtoons");
   element.appendChild(pic);
 
 

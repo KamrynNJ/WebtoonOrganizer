@@ -8,7 +8,7 @@
 
     <h1> Webtoon Organizer</h1>
 
-    <div class="webtoons">
+    <div class="webtoons" id="webtoons">
       <div id="1">
         <a href="https://zinmanga.com/manga/the-reason-why-raeliana-ended-up-at-the-dukes-mansion/">
           <img src= "https://zinmanga.com/wp-content/uploads/2020/05/post_9946_image.jpg">
@@ -175,6 +175,23 @@
         </a>
         <p>Only I Level Up Solo</p>
       </div>
+
+
+      <div class="addForm" id="addForm">
+        <form  action="/Users/kamrynjones/WebtoonOrganizer/html/Main.html" >
+          <label for="link"> Link:
+            </label><br>
+            <input type="text" id="linkGiven" name="linkGiven"><br>
+          <label for="picture"> Picture:
+            </label><br>
+            <input type="text" id="picGiven" name="picGiven"><br>
+          <label for="title"> Title:
+            </label><br>
+            <input type="text" id="titleGiven" name="titleGiven"><br>
+            <input type="submit" value="add" id="addbutton" onclick="clickAddButton(this.form)">
+
+      </form>
+    </div>
 
   </div>
 
