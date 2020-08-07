@@ -1,6 +1,9 @@
 
+
 function clickAddButton(form){
   event.preventDefault()
+
+
   var formLink=form.linkGiven.value;
   var formPic=form.picGiven.value;
   var formTitle=form.titleGiven.value;
@@ -21,8 +24,6 @@ function clickAddButton(form){
   };
   var element = document.getElementById("webtoons");
   element.appendChild(pic);
-
-
 
 
 
