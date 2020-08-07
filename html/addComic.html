@@ -6,7 +6,7 @@
   </head>
   <body>
     <div class="addForm" id="addForm">
-      <form onsubmit="clickAddButton()" action="/Users/kamrynjones/WebtoonOrganizer/html/Main.html">
+      <form  action="" >
         <label for="link"> Link:
           </label><br>
           <input type="text" id="linkGiven" name="linkGiven"><br>
@@ -16,9 +16,11 @@
         <label for="title"> Title:
           </label><br>
           <input type="text" id="titleGiven" name="titleGiven"><br>
-          <input type="submit" value="add" id="addbutton">
+          <input type="submit" value="add" id="addbutton" onclick="clickAddButton(this.form)">
 
     </form>
+  </div>
+  <div id="div1">
   </div>
     <script src="../script/add.js">
     </script>
