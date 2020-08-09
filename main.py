@@ -19,7 +19,7 @@ class HomePage(webapp2.RequestHandler):
 
 class ShowComic(webapp2.RequestHandler):
     def post(self):
-        results_template = the_jinja_env.get_template('html/addComic.html')
+        results_template = the_jinja_env.get_template('addComic.html')
         # Access the user data via the form's input elements' names.
         title_of_comic = self.request.get('titleGiven')
         pic_of_comic = self.request.get('picGiven')
@@ -36,5 +36,5 @@ class ShowComic(webapp2.RequestHandler):
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', HomePage),
-    ('/result', ShowComic), #this maps the root url to the Main Page Handler
+    ('/addComic.html', ShowComic), #this maps the root url to the Main Page Handler
 ], debug=True)
