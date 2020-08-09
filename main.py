@@ -36,5 +36,5 @@ class ShowComic(webapp2.RequestHandler):
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', HomePage),
-    ('html/addComic.html', ShowComic), #this maps the root url to the Main Page Handler
+    ('WebtoonOrganizer/result', ShowComic), #this maps the root url to the Main Page Handler
 ], debug=True)
