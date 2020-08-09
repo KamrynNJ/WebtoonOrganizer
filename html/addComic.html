@@ -5,23 +5,14 @@
     <title></title>
   </head>
   <body>
-    <div class="addForm" id="addForm">
-      <form  action="/Users/kamrynjones/WebtoonOrganizer/html/Main.html" >
-        <label for="link"> Link:
-          </label><br>
-          <input type="text" id="linkGiven" name="linkGiven"><br>
-        <label for="picture"> Picture:
-          </label><br>
-          <input type="text" id="picGiven" name="picGiven"><br>
-        <label for="title"> Title:
-          </label><br>
-          <input type="text" id="titleGiven" name="titleGiven"><br>
-          <input type="submit" value="add" id="addbutton" onclick="clickAddButton(this.form)">
+    <div>
+      <a href="{{link_from_comic}}">
+        <img src= "{{pic_from_form}}">
+      </a>
+      <p>{{title_from_form}}</p>
+    </div>
 
-    </form>
-  </div>
-  <div id="div1">
-  </div>
+
     <script src="../script/add.js">
     </script>
   </body>

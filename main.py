@@ -17,7 +17,24 @@ class HomePage(webapp2.RequestHandler):
         home_template = the_jinja_env.get_template('index.html')
         self.response.write(home_template.render())  # the response
 
+class ShowComic(webapp2.RequestHandler):
+    def post(self):
+        results_template = the_jinja_env.get_template('html/addComic.html')
+        # Access the user data via the form's input elements' names.
+        title_of_comic = self.request.get('titleGiven')
+        pic_of_comic = self.request.get('picGiven')
+        link_of_comic=self.request.get('linkGiven')
+        # Organize that user data into a dictionary.
+        the_variable_dict = {
+            "title_from_form": title_of_comic,
+            "pic_from_form": pic_of_comic,
+            "link_from_comic": link_of_comic
+        }
+        # pass that dictionary to the Jinja2 `.render()` method
+        self.response.write(results_template.render(the_variable_dict))
+
 # the app configuration section
 app = webapp2.WSGIApplication([
-    ('/', HomePage), #this maps the root url to the Main Page Handler
+    ('/', HomePage),
+    ('/result', ShowComic), #this maps the root url to the Main Page Handler
 ], debug=True)
