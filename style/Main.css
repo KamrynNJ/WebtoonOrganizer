@@ -25,6 +25,10 @@ body{
   padding-right: 5px;
   border-width: thin;
 }
+img{
+  height: 275px;
+  width: 200px;
+}
 #w1{
   width: 200px;
 }
