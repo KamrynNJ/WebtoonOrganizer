@@ -36,5 +36,5 @@ class ShowComic(webapp2.RequestHandler):
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', HomePage),
-    ('/addComic.html', ShowComic), #this maps the root url to the Main Page Handler
+    ('addComic.html', ShowComic), #this maps the root url to the Main Page Handler
 ], debug=True)
