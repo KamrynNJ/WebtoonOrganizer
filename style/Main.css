@@ -17,15 +17,29 @@ body{
   width: auto;
   margin: auto;
   justify-content: space-around;
-
-
+}
+.deleteButton{
 
 }
+
+.titlePara{
+  margin: 0;
+  padding: 0;
+}
+
 .webtoon{
   padding-right: 5px;
   border-width: thin;
+  width: 200px;
 }
-.delete_edit_buttons{
+
+.delete_edit_button{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.titleLine{
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -33,73 +47,4 @@ body{
 img{
   height: 275px;
   width: 200px;
-}
-#w1{
-  width: 200px;
-}
-#w2{
-    width: 200px;
-}
-#w3{
-    width: 200px;
-}
-#w4{
-    width: 200px;
-}
-#w5{
-    width: 200px;
-}
-#w6{
-    width: 200px;
-}
-#w7{
-    width: 200px;
-}
-#w8{
-    width: 200px;
-}
-#w9{
-    width: 200px;
-}
-#w10{
-    width: 200px;
-}
-#w11{
-    width: 200px;
-}
-#w12{
-    width: 200px;
-}
-#w13{
-    width: 200px;
-}
-#w14{
-    width: 200px;
-}
-#w15{
-    width: 200px;
-}
-#w16{
-    width: 200px;
-}
-#w17{
-    width: 200px;
-}
-#w19{
-    width: 200px;
-}
-#w20{
-    width: 200px;
-}
-#w21{
-    width: 200px;
-}
-#w22{
-    width: 200px;
-}
-#w23{
-    width: 200px;
-}
-#w24{
-    width: 200px;
 }
