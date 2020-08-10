@@ -52,17 +52,22 @@ class DeleteWebtoon(webapp2.RequestHandler):
             "value_from_form": title_for_deleting,
         }
         deleting_title = NewWebtoon.query().filter(NewWebtoon.title_class == title_for_deleting).get()
-        print(title_for_deleting)
-        print("this is key below")
-        print(deleting_title)
         deleting_title.key.delete()
 
         self.response.write(delete_template.render(the_variables))
-
-
+class EditWebtoon(webapp2.RequestHandler):
+    def post(self):
+        edit_template = the_jinja_env.get_template('html/editPage.html')
+        webtoon_for_editing = self.request.get('hiddenValueForEdit')
+        the_variables_for_edit = {
+            "value_from_form_for_edit": webtoon_for_editing,
+        }
+        
+        self.response.write(edit_template.render(the_variables_for_edit))
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', HomePage),
     ('/addComicConfirm', ShowComic),
-    ('/deleteConfirm', DeleteWebtoon), #this maps the root url to the Main Page Handler
+    ('/deleteConfirm', DeleteWebtoon),
+    ('/editConfirm', EditWebtoon), #this maps the root url to the Main Page Handler
 ], debug=True)

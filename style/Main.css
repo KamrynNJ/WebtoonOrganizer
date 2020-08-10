@@ -25,6 +25,11 @@ body{
   padding-right: 5px;
   border-width: thin;
 }
+.delete_edit_buttons{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 img{
   height: 275px;
   width: 200px;
