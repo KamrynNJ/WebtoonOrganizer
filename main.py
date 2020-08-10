@@ -21,7 +21,10 @@ class NewWebtoon(ndb.Model):
 class HomePage(webapp2.RequestHandler):
     def get(self):  # for a get request
         home_template = the_jinja_env.get_template('index.html')
-        self.response.write(home_template.render())  # the response
+        webtoon_all=NewWebtoon.query().fetch()
+        self.response.write(home_template.render({'webtoon_info': webtoon_all,
+                                                    }))  # the response
+
 
 class ShowComic(webapp2.RequestHandler):
     def post(self):

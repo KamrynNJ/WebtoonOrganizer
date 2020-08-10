@@ -177,6 +177,17 @@
         <p>Only I Level Up Solo</p>
       </div>
 
+      {% for each_blog in webtoon_info %}
+        <div>
+          <a href="{{each_blog.link_class}}">
+            <img src= "{{each_blog.picture_class}}">
+          </a>
+          <p>{{each_blog.title_class}}</p>
+        </div>
+      {% endfor %}
+
+
+
       <div class="addForm" id="addForm">
         <form  action="/addComic.html" method="post">
           <label for="link"> Link:
