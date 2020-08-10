@@ -59,15 +59,32 @@ class EditWebtoon(webapp2.RequestHandler):
     def post(self):
         edit_template = the_jinja_env.get_template('html/editPage.html')
         webtoon_for_editing = self.request.get('hiddenValueForEdit')
+        The_entitity_chosen= NewWebtoon.query().filter(NewWebtoon.title_class == webtoon_for_editing).get()
+        The_entitity_chosen_title=The_entitity_chosen.title_class
+        The_entitity_chosen_pic=The_entitity_chosen.picture_class
+        The_entitity_chosen_link=The_entitity_chosen.link_class
         the_variables_for_edit = {
-            "value_from_form_for_edit": webtoon_for_editing,
+            "value_from_form_for_edit": The_entitity_chosen,
+            "title_from_form_for_edit":The_entitity_chosen_title,
+            "pic_from_form_for_edit":The_entitity_chosen_pic,
+            "link_from_form_for_edit":The_entitity_chosen_link,
         }
-        
+
         self.response.write(edit_template.render(the_variables_for_edit))
+class EditWebtoonConfirm(webapp2.RequestHandler):
+    def post(self):
+        editConfirm_template = the_jinja_env.get_template('html/editConfirm.html')
+        webtoon_editing = self.request.get('update_it')
+        the_variable_for_edit = {
+            "value_from_form_for_editing": webtoon_editing,
+        }
+
+        self.response.write(editConfirm_template.render(the_variable_for_edit))
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', HomePage),
     ('/addComicConfirm', ShowComic),
     ('/deleteConfirm', DeleteWebtoon),
-    ('/editConfirm', EditWebtoon), #this maps the root url to the Main Page Handler
+    ('/editPage', EditWebtoon),
+    ('/editConfirm', EditWebtoonConfirm), #this maps the root url to the Main Page Handler
 ], debug=True)
