@@ -65,19 +65,31 @@ class EditWebtoon(webapp2.RequestHandler):
         The_entitity_chosen_link=The_entitity_chosen.link_class
         the_variables_for_edit = {
             "value_from_form_for_edit": The_entitity_chosen,
-            "title_from_form_for_edit":The_entitity_chosen_title,
-            "pic_from_form_for_edit":The_entitity_chosen_pic,
-            "link_from_form_for_edit":The_entitity_chosen_link,
         }
 
         self.response.write(edit_template.render(the_variables_for_edit))
 class EditWebtoonConfirm(webapp2.RequestHandler):
     def post(self):
         editConfirm_template = the_jinja_env.get_template('html/editConfirm.html')
-        webtoon_editing = self.request.get('update_it')
+        title_for_it=self.request.get('hiddenDateValueForEditing')
+        link_editing = self.request.get('linkEditing')
+        title_editing=self.request.get('titleEditing')
+        pic_editing=self.request.get('picEditing')
+
+        The_webtoon_chosen= NewWebtoon.query().filter(NewWebtoon.title_class ==title_for_it).get()
+        The_webtoon_chosen.title_class=title_editing
+        The_webtoon_chosen.picture_class=pic_editing
+        The_webtoon_chosen.link_class=link_editing
+        The_webtoon_chosen.put()
+        print("This is the webtoon")
+        print(title_for_it)
+
         the_variable_for_edit = {
-            "value_from_form_for_editing": webtoon_editing,
+            "editing_title": title_editing,
+            "editing_link": link_editing,
+            "editing_pic": pic_editing,
         }
+
 
         self.response.write(editConfirm_template.render(the_variable_for_edit))
 # the app configuration section

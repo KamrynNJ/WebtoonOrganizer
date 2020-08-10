@@ -6,37 +6,22 @@
   </head>
   <body>
     <p>please change info</p>
-
-    <p>What would you to change</p>
-    <form id="editForm" method="post">
-      <input type="radio" id="newLink" name="update_it" value="NewLink" checked>
-      <label for="newLink">New Link</label><br>
-      <input type="radio" id="newPic" name="update_it" value="NewPic">
-      <label for="newPic">New Picture</label><br>
-      <input type="radio" id="newTitle" name="update_it" value="NewTitle">
-      <label for="newTitle">New Title</label>
-      <input type="submit" value="Submit" id="submitButton">
-    </form>
-    <div id="addEditForm">
-    </div>
-
-<!--
     <div class="editForm" id="editForm">
       <form  action="/editConfirm" method="post">
         <label for="link"> NewLink:
           </label><br>
-          <input type="text" id="linkGiven" name="linkGiven"><br>
+          <input type="text" id="linkGiven" name="linkEditing" value="{{value_from_form_for_edit.link_class}}"><br>
         <label for="picture"> NewPicture:
           </label><br>
-          <input type="text" id="picGiven" name="picGiven"><br>
+          <input type="text" id="picGiven" name="picEditing" value={{value_from_form_for_edit.picture_class}}><br>
         <label for="title"> NewTitle:
           </label><br>
-          <input type="text" id="titleGiven" name="titleGiven"><br>
+          <input type="text" id="titleGiven" name="titleEditing" value="{{value_from_form_for_edit.title_class}}"><br>
+          <input type=hidden id="hiddenDateValueForEditing" name="hiddenDateValueForEditing"value="{{value_from_form_for_edit.title_class}}" />
           <input type="submit" value="add" id="addbutton">
 
     </form>
   </div>
--->
   <script src="../style/add.js"></script>
   </body>
 </html>
