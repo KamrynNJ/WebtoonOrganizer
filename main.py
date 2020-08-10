@@ -26,11 +26,9 @@ class HomePage(webapp2.RequestHandler):
         webtoon_all=NewWebtoon.query().order(NewWebtoon.date_class).fetch()
         self.response.write(home_template.render({'webtoon_info': webtoon_all,
                                                     }))  # the response
-
-
 class ShowComic(webapp2.RequestHandler):
     def post(self):
-        results_template = the_jinja_env.get_template('addComic.html')
+        results_template = the_jinja_env.get_template('html/addComic.html')
         # Access the user data via the form's input elements' names.
         title_of_comic = self.request.get('titleGiven')
         pic_of_comic = self.request.get('picGiven')
@@ -46,9 +44,25 @@ class ShowComic(webapp2.RequestHandler):
         print(new_entity)
         # pass that dictionary to the Jinja2 `.render()` method
         self.response.write(results_template.render(the_variable_dict))
+class DeleteWebtoon(webapp2.RequestHandler):
+    def post(self):
+        delete_template = the_jinja_env.get_template('html/deletePage.html')
+        title_for_deleting = self.request.get('hiddenValue')
+        the_variables = {
+            "value_from_form": title_for_deleting,
+        }
+        deleting_title = NewWebtoon.query().filter(NewWebtoon.title_class == title_for_deleting).get()
+        print(title_for_deleting)
+        print("this is key below")
+        print(deleting_title)
+        deleting_title.key.delete()
+
+        self.response.write(delete_template.render(the_variables))
+
 
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', HomePage),
-    ('/addComic.html', ShowComic), #this maps the root url to the Main Page Handler
+    ('/addComicConfirm', ShowComic),
+    ('/deleteConfirm', DeleteWebtoon), #this maps the root url to the Main Page Handler
 ], debug=True)

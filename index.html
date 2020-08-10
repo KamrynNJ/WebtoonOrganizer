@@ -183,13 +183,17 @@
             <img src= "{{each_blog.picture_class}}">
           </a>
           <p>{{each_blog.title_class}}</p>
+          <form  action="/deleteConfirm" method=post class=delete-movie>
+            <input type=hidden id="hiddenValue" name="hiddenValue"value="{{each_blog.title_class}}" />
+            <input type=submit value="delete"/>
+          </form>
         </div>
       {% endfor %}
 
 
 
       <div class="addForm" id="addForm">
-        <form  action="/addComic.html" method="post">
+        <form  action="/addComicConfirm" method="post">
           <label for="link"> Link:
             </label><br>
             <input type="text" id="linkGiven" name="linkGiven"><br>
