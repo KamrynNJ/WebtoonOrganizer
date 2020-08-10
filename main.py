@@ -5,6 +5,7 @@ import webapp2
 import jinja2
 import os
 from google.appengine.ext import ndb
+import time
 
 # This initializes the jinja2 Environment.
 # This will be the same in every app that uses the jinja2 templating library.
@@ -17,11 +18,12 @@ class NewWebtoon(ndb.Model):
   title_class = ndb.StringProperty(required=True)
   picture_class = ndb.TextProperty(required=True)
   link_class= ndb.StringProperty(required=True)
+  date_class=ndb.FloatProperty(required=True)
 
 class HomePage(webapp2.RequestHandler):
     def get(self):  # for a get request
         home_template = the_jinja_env.get_template('index.html')
-        webtoon_all=NewWebtoon.query().fetch()
+        webtoon_all=NewWebtoon.query().order(NewWebtoon.date_class).fetch()
         self.response.write(home_template.render({'webtoon_info': webtoon_all,
                                                     }))  # the response
 
@@ -39,7 +41,7 @@ class ShowComic(webapp2.RequestHandler):
             "pic_from_form": pic_of_comic,
             "link_from_comic": link_of_comic,
         }
-        new_entity=NewWebtoon(title_class=title_of_comic, picture_class=pic_of_comic, link_class=link_of_comic)
+        new_entity=NewWebtoon(title_class=title_of_comic, picture_class=pic_of_comic, link_class=link_of_comic, date_class=time.time())
         new_entity.put()
         print(new_entity)
         # pass that dictionary to the Jinja2 `.render()` method
