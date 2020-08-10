@@ -15,7 +15,7 @@ the_jinja_env = jinja2.Environment(
 
 class NewWebtoon(ndb.Model):
   title_class = ndb.StringProperty(required=True)
-  picture_class = ndb.StringProperty(required=True)
+  picture_class = ndb.TextProperty(required=True)
   link_class= ndb.StringProperty(required=True)
 
 class HomePage(webapp2.RequestHandler):
@@ -36,6 +36,9 @@ class ShowComic(webapp2.RequestHandler):
             "pic_from_form": pic_of_comic,
             "link_from_comic": link_of_comic,
         }
+        new_entity=NewWebtoon(title_class=title_of_comic, picture_class=pic_of_comic, link_class=link_of_comic)
+        new_entity.put()
+        print(new_entity)
         # pass that dictionary to the Jinja2 `.render()` method
         self.response.write(results_template.render(the_variable_dict))
 
