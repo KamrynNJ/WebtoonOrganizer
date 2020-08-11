@@ -186,12 +186,12 @@
             <img src= "{{each_blog.picture_class}}">
           </a>
             <div class="chapterLine">
-              <p>chapter:</p>
+              <p>chapter: {{each_blog.chapter_class}}</p>
               <div class="delete_edit_button">
 
                 <form  action="/deleteConfirm" method=post class=delete-movie>
                   <input type=hidden id="hiddenValue" name="hiddenValue"value="{{each_blog.title_class}}" />
-                  <input type=submit value="-"/>
+                  <input type=submit value="Delete"/>
                 </form>
                 <form  action="/editPage" method=post class=edit-movie>
                   <input type=hidden id="hiddenValueForEdit" name="hiddenValueForEdit"value="{{each_blog.title_class}}" />
@@ -215,6 +215,9 @@
           <label for="title"> Title:
             </label><br>
             <input type="text" id="titleGiven" name="titleGiven"><br>
+          <label for="Chapter"> Current Chapter:
+            </label><br>
+            <input type="text" id="chapterGiven" name="chapterGiven"><br>
             <input type="submit" value="add" id="addbutton">
 
       </form>

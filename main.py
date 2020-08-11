@@ -18,6 +18,7 @@ class NewWebtoon(ndb.Model):
   title_class = ndb.StringProperty(required=True)
   picture_class = ndb.TextProperty(required=True)
   link_class= ndb.StringProperty(required=True)
+  chapter_class=ndb.StringProperty(required=True)
   date_class=ndb.FloatProperty(required=True)
 
 class HomePage(webapp2.RequestHandler):
@@ -33,13 +34,15 @@ class ShowComic(webapp2.RequestHandler):
         title_of_comic = self.request.get('titleGiven')
         pic_of_comic = self.request.get('picGiven')
         link_of_comic=self.request.get('linkGiven')
+        chapter_of_comic=self.request.get('chapterGiven')
         # Organize that user data into a dictionary.
         the_variable_dict = {
             "title_from_form": title_of_comic,
             "pic_from_form": pic_of_comic,
             "link_from_comic": link_of_comic,
+            "chapter_from_comic":chapter_of_comic,
         }
-        new_entity=NewWebtoon(title_class=title_of_comic, picture_class=pic_of_comic, link_class=link_of_comic, date_class=time.time())
+        new_entity=NewWebtoon(title_class=title_of_comic, picture_class=pic_of_comic, link_class=link_of_comic,chapter_class=chapter_of_comic, date_class=time.time())
         new_entity.put()
         print(new_entity)
         # pass that dictionary to the Jinja2 `.render()` method
@@ -75,11 +78,13 @@ class EditWebtoonConfirm(webapp2.RequestHandler):
         link_editing = self.request.get('linkEditing')
         title_editing=self.request.get('titleEditing')
         pic_editing=self.request.get('picEditing')
+        chapter_editing=self.request.get('chapterEditing')
 
         The_webtoon_chosen= NewWebtoon.query().filter(NewWebtoon.title_class ==title_for_it).get()
         The_webtoon_chosen.title_class=title_editing
         The_webtoon_chosen.picture_class=pic_editing
         The_webtoon_chosen.link_class=link_editing
+        The_webtoon_chosen.chapter_class=chapter_editing
         The_webtoon_chosen.put()
         print("This is the webtoon")
         print(title_for_it)
