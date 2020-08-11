@@ -18,13 +18,11 @@ body{
   margin: auto;
   justify-content: space-around;
 }
-.deleteButton{
-
-}
 
 .titlePara{
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 .webtoon{
@@ -32,17 +30,25 @@ body{
   border-width: thin;
   width: 200px;
 }
+.chapterLine{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between; 
+}
 
 .delete_edit_button{
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-content: center;
+  align-items: center;
+
 }
 .titleLine{
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
+  height: 45px;
+  justify-content: center;
 }
 img{
   height: 275px;
