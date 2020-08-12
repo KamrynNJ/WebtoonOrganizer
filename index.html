@@ -10,6 +10,7 @@
     <h1 class="header"> Webtoon Organizer</h1>
 
     <div class="webtoons" id="webtoons">
+      <!--
       <div class="webtoon"id="w1">
         <a href="https://zinmanga.com/manga/the-reason-why-raeliana-ended-up-at-the-dukes-mansion/">
           <img src= "https://mixedmanga.com/wp-content/uploads/2020/02/The-Reason-Why-Raeliana-Ended-up-at-the-Dukes-Mansion-193x278.jpg">
@@ -176,6 +177,7 @@
         </a>
         <p>Only I Level Up Solo</p>
       </div>
+    -->
 
       {% for each_blog in webtoon_info %}
         <div class="webtoon">
@@ -186,7 +188,7 @@
             <img src= "{{each_blog.picture_class}}">
           </a>
             <div class="chapterLine">
-              <p>chapter: {{each_blog.chapter_class}}</p>
+              <p class="chapterSize">Chapter: {{each_blog.chapter_class}}</p>
               <div class="delete_edit_button">
 
                 <form  action="/deleteConfirm" method=post class=delete-movie>
@@ -205,20 +207,20 @@
 
 
       <div class="addForm" id="addForm">
-        <form  action="/addComicConfirm" method="post">
-          <label for="link"> Link:
+        <form  action="/addComicConfirm" method="post" class="formDiv">
+          <label for="link" id="linkLabels"> Link:
             </label><br>
             <input type="text" id="linkGiven" name="linkGiven"><br>
-          <label for="picture"> Picture:
+          <label for="picture" id="picLabels"> Picture:
             </label><br>
             <input type="text" id="picGiven" name="picGiven"><br>
-          <label for="title"> Title:
+          <label for="title" id="titleLabels"> Title:
             </label><br>
             <input type="text" id="titleGiven" name="titleGiven"><br>
-          <label for="Chapter"> Current Chapter:
+          <label for="Chapter" id="chapterLabels"> Current Chapter:
             </label><br>
             <input type="text" id="chapterGiven" name="chapterGiven"><br>
-            <input type="submit" value="add" id="addbutton">
+            <input type="submit" id="submitAddForm" value="Add" id="addbutton">
 
       </form>
     </div>
